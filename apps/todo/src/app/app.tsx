@@ -1,15 +1,15 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
+import AddTodoForm from './AddTodoForm';
+import TodoList from './TodoList';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import NxWelcome from './nx-welcome';
+const queryClient = new QueryClient();
 
 export function App() {
   return (
-    <>
-      <NxWelcome title="todo" />
-
-      <div />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <AddTodoForm />
+      <TodoList />
+    </QueryClientProvider>
   );
 }
 
