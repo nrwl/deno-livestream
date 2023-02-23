@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "@deno-todo/models": "./libs/models/src/lib/models.ts"
+  }
+}

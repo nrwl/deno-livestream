@@ -56,5 +56,6 @@
         "linter": "eslint"
       }
     }
-  }
+  },
+  "plugins": ["@nrwl/deno"]
 }
