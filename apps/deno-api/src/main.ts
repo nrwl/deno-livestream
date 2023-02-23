@@ -11,9 +11,11 @@ let count = 0;
 const router = new Router();
 router
   .get('/', (context) => {
+    console.log('in get');
     context.response.body = Object.values(todos);
   })
   .post('/create', async ({ request, response }) => {
+    console.log('in create', await request.body().value);
     count++;
     const id = `${count}`;
     const todo = {
@@ -25,11 +27,13 @@ router
     todos[todo.id] = todo;
   })
   .post('/toggle', async ({ request, response }) => {
+    console.log('in toggle', await request.body().value);
     const todo = todos[(await request.body().value).id];
     todo.completed = !todo.completed;
     response.body = todo;
   })
   .delete('/', async ({ request, response }) => {
+    console.log('in delete', await request.body().value);
     const id = (await request.body().value).id;
     const todo = todos[id];
     delete todos[id];
