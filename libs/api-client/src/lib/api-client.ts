@@ -1,11 +1,11 @@
 import { ToDo } from '@deno-todo/models';
 
 export function getTodos(): Promise<ToDo[]> {
-  return fetch('http://localhost:3000').then((res) => res.json());
+  return fetch('http://localhost:4200/todos').then((res) => res.json());
 }
 
 export function createTodo(title: string): Promise<ToDo> {
-  return fetch('http://localhost:3000/create', {
+  return fetch('http://localhost:4200/todos/create', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ export function createTodo(title: string): Promise<ToDo> {
 }
 
 export function toggleTodo(id: string): Promise<ToDo> {
-  return fetch('http://localhost:3000/toggle', {
+  return fetch('http://localhost:4200/todos/toggle', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ export function toggleTodo(id: string): Promise<ToDo> {
 }
 
 export function deleteTodo(id: string): Promise<ToDo> {
-  return fetch('http://localhost:3000', {
+  return fetch('http://localhost:4200/todos', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

@@ -9,6 +9,9 @@ export default defineConfig({
   server: {
     port: 4200,
     host: 'localhost',
+    proxy: {
+      '/todos': 'http://localhost:8080'
+    }
   },
 
   preview: {

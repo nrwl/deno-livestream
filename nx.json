@@ -78,7 +78,6 @@
     }
   },
   "plugins": [
-    "@nrwl/deno",
     "@nxrocks/nx-spring-boot"
   ]
 }

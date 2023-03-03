@@ -12,7 +12,15 @@
 			"installGradle": "false"
 		},
 		"ghcr.io/devcontainers/features/node:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"nrwl.angular-console"
+			]
+		}
 	}
+	
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
