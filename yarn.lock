@@ -1776,26 +1776,6 @@
     dotenv "~10.0.0"
     semver "7.3.4"
 
-"@nrwl/deno@^0.157.0":
-  version "0.157.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/deno/-/deno-0.157.0.tgz#397be460371577feed34410a2652de01e7fe040c"
-  integrity sha512-LW7thChQ08W6N/h/NDT7RPzXvVM2WuP+2qdzgsdlRKRJK5HQdYS/B/geic/AbzY52O+Ajj/mBFqb6LfxXJrStw==
-  dependencies:
-    "@nrwl/devkit" "15.7.0"
-    "@swc/core" "^1.2.173"
-    fs-extra "^11.1.0"
-
-"@nrwl/devkit@15.7.0":
-  version "15.7.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/devkit/-/devkit-15.7.0.tgz#90929cc1e46d2e8f1ea1c0f83baa87db8d6ba7b1"
-  integrity sha512-aPh3xnSpP4HH8sU2ICuuhtBgp2k4ydfkW/uTOlK/BvT94++AJ/Aj8ZSJFWAd2IteFsMNynPz5c0jLO+MSTqRnA==
-  dependencies:
-    "@phenomnomnominal/tsquery" "4.1.1"
-    ejs "^3.1.7"
-    ignore "^5.0.4"
-    semver "7.3.4"
-    tslib "^2.3.0"
-
 "@nrwl/devkit@15.7.2":
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/@nrwl/devkit/-/devkit-15.7.2.tgz#079d30898bf7ddf374e2aaa9f2c52b31447b84ce"
