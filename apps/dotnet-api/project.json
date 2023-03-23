@@ -1,0 +1,14 @@
+{
+  "name": "dotnet-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "swagger": {
+      "executor": "@nx-dotnet/core:update-swagger",
+      "outputs": ["options.output"],
+      "options": {
+        "output": "libs/generated/dotnet-api-swagger/swagger.json"
+      },
+      "dependsOn": ["build"]
+    }
+  }
+}

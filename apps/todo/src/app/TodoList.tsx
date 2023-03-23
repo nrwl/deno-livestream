@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { deleteTodo, getTodos, toggleTodo } from '@deno-todo/api-client';
-import { ToDo } from '@deno-todo/models';
+import { Todo } from '@deno-todo/generated/dotnet-api-types';
 
 export default function TodoList() {
   const { data } = useQuery({
@@ -17,12 +17,12 @@ export default function TodoList() {
   );
 }
 
-function TodoItem({ completed, title, id }: ToDo) {
+function TodoItem({ completed, title, id }: Todo) {
   const client = useQueryClient();
   const { mutate: deleteTodoItem } = useMutation({
     mutationFn: deleteTodo,
     onSuccess: (deleteItem) => {
-      client.setQueryData(['todos'], (old: ToDo[] | undefined) =>
+      client.setQueryData(['todos'], (old: Todo[] | undefined) =>
         old?.filter((item) => item.id !== deleteItem.id)
       );
     },
@@ -30,7 +30,7 @@ function TodoItem({ completed, title, id }: ToDo) {
   const { mutate: toggle } = useMutation({
     mutationFn: toggleTodo,
     onSuccess: (newItem) => {
-      client.setQueryData(['todos'], (old: ToDo[] | undefined) => {
+      client.setQueryData(['todos'], (old: Todo[] | undefined) => {
         if (!old) return [newItem];
         return old.map((item) => {
           if (item.id === newItem.id) {

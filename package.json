@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "npx nx run-many --target=serve"
+    "start": "npx nx run-many --target=serve",
+    "prepare": "nx g @nx-dotnet/core:restore"
   },
   "private": true,
   "devDependencies": {
@@ -12,12 +13,14 @@
     "@nrwl/esbuild": "15.7.2",
     "@nrwl/eslint-plugin-nx": "15.7.2",
     "@nrwl/jest": "15.7.2",
+    "@nrwl/js": "15.7.2",
     "@nrwl/linter": "15.7.2",
     "@nrwl/node": "^15.7.2",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/react": "15.7.2",
     "@nrwl/vite": "15.7.2",
     "@nrwl/workspace": "15.7.2",
+    "@nx-dotnet/core": "^1.21.1",
     "@swc/cli": "~0.1.55",
     "@swc/core": "^1.2.173",
     "@swc/jest": "0.2.20",

@@ -16,6 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@deno-todo/api-client": ["libs/api-client/src/index.ts"],
+      "@deno-todo/generated/dotnet-api-types": [
+        "libs/generated/dotnet-api-types/src/index.ts"
+      ],
       "@deno-todo/models": ["libs/models/src/index.ts"]
     }
   },

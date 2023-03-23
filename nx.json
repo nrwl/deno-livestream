@@ -9,7 +9,9 @@
           "build",
           "lint",
           "test",
-          "e2e"
+          "e2e",
+          "codegen",
+          "swagger"
         ],
         "accessToken": "ZjRiNmRhOTQtODI1Ni00N2RiLTlhOGQtMTE5NzE3M2NkZjEwfHJlYWQtd3JpdGU="
       }
@@ -17,26 +19,14 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+      "dependsOn": ["^build", "codegen", "^codegen"],
+      "inputs": ["production", "^production"]
     },
     "e2e": {
-      "inputs": [
-        "default",
-        "^production"
-      ]
+      "inputs": ["default", "^production"]
     },
     "test": {
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/jest.preset.js"
-      ]
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
     },
     "lint": {
       "inputs": [
@@ -47,10 +37,7 @@
     }
   },
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -77,8 +64,5 @@
       }
     }
   },
-  "plugins": [
-    "@nrwl/deno",
-    "@nxrocks/nx-spring-boot"
-  ]
+  "plugins": ["@nrwl/deno", "@nx-dotnet/core"]
 }
