@@ -8,6 +8,7 @@
   "private": true,
   "devDependencies": {
     "@nrwl/cypress": "^15.7.2",
+    "@nrwl/deno": "^0.157.0",
     "@nrwl/esbuild": "15.7.2",
     "@nrwl/eslint-plugin-nx": "15.7.2",
     "@nrwl/jest": "15.7.2",
