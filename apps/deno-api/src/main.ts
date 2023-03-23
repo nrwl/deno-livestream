@@ -44,4 +44,4 @@ router
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-// await app.listen({ port: 3000 });
+await app.listen({ port: 3000 });
