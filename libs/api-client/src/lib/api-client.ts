@@ -1,11 +1,11 @@
 import { Todo } from '@deno-todo/generated/dotnet-api-types';
 
 export function getTodos(): Promise<Todo[]> {
-  return fetch('https://localhost:7255').then((res) => res.json());
+  return fetch('http://localhost:3000').then((res) => res.json());
 }
 
 export function createTodo(title: string): Promise<Todo> {
-  return fetch('https://localhost:7255/create', {
+  return fetch('http://localhost:3000/create', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ export function createTodo(title: string): Promise<Todo> {
 }
 
 export function toggleTodo(id: string): Promise<Todo> {
-  return fetch('https://localhost:7255/toggle', {
+  return fetch('http://localhost:3000/toggle', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ export function toggleTodo(id: string): Promise<Todo> {
 }
 
 export function deleteTodo(id: string): Promise<Todo> {
-  return fetch('https://localhost:7255', {
+  return fetch('http://localhost:3000', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
