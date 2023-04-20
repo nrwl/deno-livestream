@@ -1,5 +1,4 @@
 import { createTodo } from '@deno-todo/api-client';
-import { ToDo } from '@deno-todo/models';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
@@ -8,11 +7,8 @@ export default function AddTodoForm() {
   const [title, setNewTodoName] = useState('');
   const { mutate, isLoading } = useMutation({
     mutationFn: createTodo,
-    onSuccess: (todoItem) => {
-      client.setQueryData(['todos'], (old: ToDo[] | undefined) => {
-        if (!old) return [todoItem];
-        return [...old, todoItem];
-      });
+    onSettled: () => {
+      client.invalidateQueries(['todos']);
     },
   });
 

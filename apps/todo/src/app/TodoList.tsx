@@ -3,12 +3,16 @@ import { deleteTodo, getTodos, toggleTodo } from '@deno-todo/api-client';
 import { Todo } from '@deno-todo/generated/dotnet-api-types';
 
 export default function TodoList() {
-  const { data } = useQuery({
+  const { data, status } = useQuery({
     queryKey: ['todos'],
     queryFn: getTodos,
-    refetchOnWindowFocus: false,
+    staleTime: 10_000,
   });
-  return (
+  return status === 'loading' ? (
+    <p>loading...</p>
+  ) : status === 'error' ? (
+    <p> you messed up</p>
+  ) : (
     <ul>
       {data?.map((item) => (
         <TodoItem key={item.id} {...item} />
@@ -21,14 +25,13 @@ function TodoItem({ completed, title, id }: Todo) {
   const client = useQueryClient();
   const { mutate: deleteTodoItem } = useMutation({
     mutationFn: deleteTodo,
-    onSuccess: (deleteItem) => {
-      client.setQueryData(['todos'], (old: Todo[] | undefined) =>
-        old?.filter((item) => item.id !== deleteItem.id)
-      );
+    onSettled: () => {
+      client.invalidateQueries(['todos']);
     },
   });
   const { mutate: toggle } = useMutation({
     mutationFn: toggleTodo,
+
     onSuccess: (newItem) => {
       client.setQueryData(['todos'], (old: Todo[] | undefined) => {
         if (!old) return [newItem];
@@ -46,7 +49,7 @@ function TodoItem({ completed, title, id }: Todo) {
     <li>
       <input
         type="checkbox"
-        defaultChecked={completed}
+        checked={!!completed}
         onClick={() => toggle(id)}
         id={`checkbox-${id}`}
       />

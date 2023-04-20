@@ -1,10 +1,15 @@
-import { Todo } from '@deno-todo/generated/dotnet-api-types';
+import { ToDo } from '@deno-todo/models';
 
-export function getTodos(): Promise<Todo[]> {
-  return fetch('http://localhost:3000').then((res) => res.json());
+export function getTodos(): Promise<ToDo[]> {
+  return fetch('http://localhost:3000').then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    throw new Error('Failed to fetch todos');
+  });
 }
 
-export function createTodo(title: string): Promise<Todo> {
+export function createTodo(title: string): Promise<ToDo> {
   return fetch('http://localhost:3000/create', {
     method: 'POST',
     headers: {
@@ -14,7 +19,9 @@ export function createTodo(title: string): Promise<Todo> {
   }).then((res) => res.json());
 }
 
-export function toggleTodo(id: string): Promise<Todo> {
+export async function toggleTodo(id: string): Promise<ToDo> {
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+  console.log('done waiting');
   return fetch('http://localhost:3000/toggle', {
     method: 'POST',
     headers: {
@@ -24,7 +31,7 @@ export function toggleTodo(id: string): Promise<Todo> {
   }).then((res) => res.json());
 }
 
-export function deleteTodo(id: string): Promise<Todo> {
+export function deleteTodo(id: string): Promise<ToDo> {
   return fetch('http://localhost:3000', {
     method: 'DELETE',
     headers: {
