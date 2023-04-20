@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/api-client",
         "main": "libs/api-client/src/index.ts",
         "tsConfig": "libs/api-client/tsconfig.lib.json",
-        "assets": ["libs/api-client/*.md"]
+        "assets": ["libs/api-client/*.md"],
+        "generatePackageJson": true
       }
     },
     "lint": {
