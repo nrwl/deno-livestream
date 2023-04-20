@@ -19,9 +19,7 @@ export function createTodo(title: string): Promise<ToDo> {
   }).then((res) => res.json());
 }
 
-export async function toggleTodo(id: string): Promise<ToDo> {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
-  console.log('done waiting');
+export function toggleTodo(id: string): Promise<ToDo> {
   return fetch('http://localhost:3000/toggle', {
     method: 'POST',
     headers: {

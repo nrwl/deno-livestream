@@ -22,7 +22,6 @@ const todos: Record<string, ToDo> = {};
 let count = 0;
 
 app.get<void, ToDo[]>('', (req, res) => {
-  console.log('here');
   res.send(Object.values(todos));
 });
 

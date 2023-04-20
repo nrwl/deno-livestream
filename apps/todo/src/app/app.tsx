@@ -1,7 +1,7 @@
-import AddTodoForm from './AddTodoForm';
-import TodoList from './TodoList';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { TodoList } from '@deno-todo/todo-list';
+import { AddTodoForm } from '@deno-todo/add-todo-form';
 
 const queryClient = new QueryClient();
 

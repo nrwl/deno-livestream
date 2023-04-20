@@ -2,7 +2,7 @@ import { createTodo } from '@deno-todo/api-client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
-export default function AddTodoForm() {
+export function AddTodoForm() {
   const client = useQueryClient();
   const [title, setNewTodoName] = useState('');
   const { mutate, isLoading } = useMutation({
