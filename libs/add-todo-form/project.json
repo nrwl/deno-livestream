@@ -27,6 +27,15 @@
           "mode": "production"
         }
       }
+    },
+    "component-test": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "libs/add-todo-form/cypress.config.ts",
+        "testingType": "component",
+        "devServerTarget": "todo:build",
+        "skipServe": true
+      }
     }
   }
 }

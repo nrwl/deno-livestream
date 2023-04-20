@@ -9,11 +9,11 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/add-todo-form',
 
   plugins: [
-    dts({
-      entryRoot: 'src',
-      tsConfigFilePath: join(__dirname, 'tsconfig.lib.json'),
-      skipDiagnostics: true,
-    }),
+    // dts({
+    //   entryRoot: 'src',
+    //   tsConfigFilePath: join(__dirname, 'tsconfig.lib.json'),
+    //   skipDiagnostics: true,
+    // }),
     react(),
     viteTsConfigPaths({
       root: '../../',
@@ -32,6 +32,7 @@ export default defineConfig({
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
+    commonjsOptions: { include: [] },
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: 'src/index.ts',
@@ -46,4 +47,5 @@ export default defineConfig({
       external: ['react', 'react-dom', 'react/jsx-runtime'],
     },
   },
+  optimizeDeps: { disabled: false },
 });

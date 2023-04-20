@@ -11,7 +11,8 @@
           "test",
           "e2e",
           "codegen",
-          "swagger"
+          "swagger",
+          "component-test"
         ],
         "accessToken": "ZjRiNmRhOTQtODI1Ni00N2RiLTlhOGQtMTE5NzE3M2NkZjEwfHJlYWQtd3JpdGU="
       }
@@ -19,14 +20,28 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build", "codegen", "^codegen"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build",
+        "codegen",
+        "^codegen"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "e2e": {
-      "inputs": ["default", "^production"]
+      "inputs": [
+        "default",
+        "^production"
+      ]
     },
     "test": {
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js"
+      ]
     },
     "lint": {
       "inputs": [
@@ -34,16 +49,28 @@
         "{workspaceRoot}/.eslintrc.json",
         "{workspaceRoot}/.eslintignore"
       ]
+    },
+    "component-test": {
+      "inputs": [
+        "default",
+        "^production"
+      ]
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/jest.config.[jt]s"
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/cypress/**/*",
+      "!{projectRoot}/**/*.cy.[jt]s?(x)",
+      "!{projectRoot}/cypress.config.[jt]s"
     ],
     "sharedGlobals": []
   },
@@ -65,5 +92,8 @@
       }
     }
   },
-  "plugins": ["@nrwl/deno", "@nx-dotnet/core"]
+  "plugins": [
+    "@nrwl/deno",
+    "@nx-dotnet/core"
+  ]
 }

@@ -27,6 +27,19 @@
           "mode": "production"
         }
       }
+    },
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "libs/todo-list/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "todo:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "todo:serve:production"
+        }
+      }
     }
   }
 }
